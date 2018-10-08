@@ -52,12 +52,12 @@ if __name__ == '__main__':
 	imgcnt=0
 
 	vslice=1
-	hslice=2
+	hslice=3
 
 for i in range(0,len(lname)):
 	# left 
 	limage=Image.open(path+ldir+lname[i])
-	limage_list=cut_image(limage,1,2)
+	limage_list=cut_image(limage,vslice,hslice)
 	save_images(imgcnt,limage_list,path,ldir)
 
 	# right
