@@ -32,13 +32,9 @@ def cut_image(image,vslice,hslice):
 		for h in range(0,hslice):
 			count+=1
 			box=(v*width_sliced,h*height_sliced,(v+1)*width_sliced,(h+1)*height_sliced)
-			print(box)
-			print('####################')
 			box_list.append(box)
 	print(count)
 	image_list=[image.crop(box) for box in box_list]
-	for img in image_list:
-		img.show()
 	return image_list
  
 def save_images(imgcnt, image_list,path,subdir):
