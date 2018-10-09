@@ -21,20 +21,24 @@ def fill_image(image):
 		new_image.paste(image,(int((new_image_length-width)/2),0))
 	return new_image
 
-#cut images, i,j is the number of vertical and horizonal slices w.r.t
+#cut images, v,h is the number of vertical and horizonal slices w.r.t
 def cut_image(image,vslice,hslice):
 	width,height=image.size
 	width_sliced=width/vslice
 	height_sliced=height/hslice
 	box_list=[]
 	count=0
-	for j in range(0,vslice):
-		for i in range(0,hslice):
+	for v in range(0,vslice):
+		for h in range(0,hslice):
 			count+=1
-			box=(i*width_sliced,j*height_sliced,(i+1)*width_sliced,(j+1)*height_sliced)
+			box=(v*width_sliced,h*height_sliced,(v+1)*width_sliced,(h+1)*height_sliced)
+			print(box)
+			print('####################')
 			box_list.append(box)
 	print(count)
 	image_list=[image.crop(box) for box in box_list]
+	for img in image_list:
+		img.show()
 	return image_list
  
 def save_images(imgcnt, image_list,path,subdir):
